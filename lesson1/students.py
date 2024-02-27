@@ -11,14 +11,18 @@
 """
 
 
-class ...:
+class Student:
 
-    def __init__(...):
-        ...
+    name: str
+    course: int
+
+    def __init__(self, name, course):
+        self.name = name
+        self.course = course
 
 
-student_1 = ...
-student_2 = ...
+student_1 = Student("Алиса", 3)
+student_2 = Student("Маргарита", 2)
 
 
 # код для проверки 
