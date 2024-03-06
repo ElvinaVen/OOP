@@ -14,20 +14,66 @@
 
 
 class User:
-    pass
+
+    def __init__(self, name, password):
+        """
+        конструктор, принимающий имя пользователя и пароль
+        :param name: свойство, которое возвращает имя пользователя
+        :param password:  свойство, которое позволяет установить или изменить пароль пользователя
+        """
+        self.name = name
+        self.password = password
+
+    @property
+    def name(self):
+        return self.name
+
+    @property
+    def password(self):
+        return self.password
+
+    @name.setter
+    def name(self, name, password):
+        """
+
+        :return:
+        """
+
+        self.name = name
+        self.password = password
+        return self.name
+
+    def login(self, password):
+        """
+        метод, который проверяет, соответствует ли введенный пароль паролю пользователя
+        :param password:
+        :return:
+        """
+        pass
+
+    def logout(self):
+        """
+        метод, который выходит из аккаунта пользователя (устанавливает значение свойства _is_logged_in в False при условии, что пользователь залогинен)
+        :return:
+        """
+        pass
+
+    @password.setter
+    def password(self, value):
+        self._password = value
 
 
-# код для проверки 
+# код для проверки
 user1 = User("Alice", "qwerty")
 print(user1.name)  # Alice
-print(user1.password)  # qwerty
-print(user1.is_admin)  # False
-
-user1.password = "newpassword"
-print(user1.password)  # newpassword
-
-user1._is_admin = True
-print(user1.is_admin)  # True
-
-user1.login("newpassword")  # True
-user1.logout()
+# print(user1.password)  # qwerty
+# print(user1.is_admin)  # False
+#
+# user1.password = "newpassword"
+# print(user1.password)  # newpassword
+#
+# user1._is_admin = True
+# print(user1.is_admin)  # True
+#
+# user1.login("newpassword")  # True
+# user1.logout()

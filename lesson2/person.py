@@ -9,9 +9,52 @@
 если он старше 18 лет, и False в противном случае
 """
 
+from datetime import datetime
+
 
 class Person:
-    pass
+
+    def __init__(self, name, age):
+        """
+        конструктор, принимающий имя и возраст человека
+        :param name:
+        :param age:
+        """
+        self.name = name
+        self.age = age
+
+    def display(self):
+        """
+        метод, выводящий на экран имя и возраст человека
+        :return:
+        """
+        print(f'{self.name} is {self.age} years old')
+
+    @classmethod
+    def from_birth_year(cls, name, birth_year):
+        """
+        класс-метод, принимающий имя и год рождения человека и
+        возвращающий объект класса Person;
+        :param name:
+        :param birth_year:
+        :return:
+        """
+        current_year = datetime.now().year
+        age = current_year - birth_year
+        return cls(name, age)
+
+    @staticmethod
+    def is_adult(age):
+        """
+        статический метод, принимающий возраст человека и возвращающий True,
+        если он старше 18 лет, и False в противном случае
+        :param:
+        :param age:
+        :return:
+        """
+        if age >= 18:
+            return True
+        return False
 
 
 # код для проверки 
