@@ -7,7 +7,8 @@
 - is_admin: свойство, которое возвращает, является ли пользователь администратором или нет
 - _is_admin: свойство-помощник, которое определяет, является ли пользователь администратором или нет
 - login(self, password): метод, который проверяет, соответствует ли введенный пароль паролю пользователя
-- logout(self): метод, который выходит из аккаунта пользователя (устанавливает значение свойства _is_logged_in в False при условии, что пользователь залогинен)
+- logout(self): метод, который выходит из аккаунта пользователя (устанавливает значение свойства _is_logged_in в
+False при условии, что пользователь залогинен)
 
 Для свойств name и password используйте декораторы @property и @password.setter.
 """
@@ -23,25 +24,27 @@ class User:
         """
         self.name = name
         self.password = password
+        # self.is_admin = is_admin
+        self._is_admin = False
+        self._is_logged_in = False
 
     @property
-    def name(self):
+    def name_func(self):
         return self.name
 
     @property
-    def password(self):
+    def password_func(self):
         return self.password
 
-    @name.setter
-    def name(self, name, password):
-        """
-
-        :return:
-        """
-
+    @name_func.setter
+    def name_func(self, name):
         self.name = name
+
+
+    @password_func.setter
+    def password_func(self, password):
         self.password = password
-        return self.name
+
 
     def login(self, password):
         """
@@ -49,31 +52,37 @@ class User:
         :param password:
         :return:
         """
-        pass
+        if password == self.password:
+            self._is_logged_in = True
+            return True
+        return False
 
     def logout(self):
         """
-        метод, который выходит из аккаунта пользователя (устанавливает значение свойства _is_logged_in в False при условии, что пользователь залогинен)
+        метод, который выходит из аккаунта пользователя (устанавливает значение свойства _is_logged_in в False при условии,
+         что пользователь залогинен)
         :return:
         """
-        pass
+        if self._is_logged_in:
+            self._is_logged_in = False
 
-    @password.setter
-    def password(self, value):
-        self._password = value
+    @property
+    def is_admin(self):
+        return self._is_admin
 
 
 # код для проверки
 user1 = User("Alice", "qwerty")
-print(user1.name)  # Alice
-# print(user1.password)  # qwerty
-# print(user1.is_admin)  # False
+print(user1.name_func)  # Alice
+print(user1.password)  # qwerty
+print(user1.is_admin)  # False
 #
-# user1.password = "newpassword"
-# print(user1.password)  # newpassword
+user1.password = "newpassword"
+print(user1.password_func)  # newpassword
 #
-# user1._is_admin = True
-# print(user1.is_admin)  # True
+user1._is_admin = True
+print(user1.is_admin)  # True
 #
-# user1.login("newpassword")  # True
-# user1.logout()
+user1.login("newpassword")  # True
+print(user1.login("newpassword"))
+user1.logout()
