@@ -26,3 +26,4 @@ print(counter())  # 1
 
 counter.increment()
 print(counter())  # 2
+

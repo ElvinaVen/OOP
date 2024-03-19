@@ -23,3 +23,4 @@ with Timer() as timer:
     time.sleep(2)
     # код для проверки 
     # print("Execution time:", timer.elapsed_time)
+

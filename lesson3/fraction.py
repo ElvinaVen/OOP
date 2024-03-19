@@ -34,3 +34,4 @@ print(str(fraction1))  # 1/2
 fraction2 = Fraction(3, 4)
 fraction3 = fraction1 + fraction2
 print(fraction3)  # 5/4
+

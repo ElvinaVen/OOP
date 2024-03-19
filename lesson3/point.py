@@ -30,3 +30,4 @@ print(str(point1))  # (1, 2)
 point2 = Point(3, 4)
 point3 = point1 + point2
 print(point3)  # (4, 6)
+

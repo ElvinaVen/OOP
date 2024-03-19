@@ -19,3 +19,4 @@ class Logger:
 # код для проверки 
 logger = Logger("log.txt")
 logger("This is a test message2.")
+
